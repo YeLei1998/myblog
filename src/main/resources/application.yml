@@ -1,1 +1,6 @@
-
+# 引入 thymeleaf 模板
+spring:
+  thymeleaf:
+    mode: HTML
+  profiles:
+    active: pro   # 指定使用的配置文件

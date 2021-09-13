@@ -1,0 +1,19 @@
+spring:
+  # 配置数据库连接
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 10086
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true  # 控制台打印sql语句
+
+# 日志配置
+logging:
+  level:
+    root: warn    # 指定 spring boot 级别
+    com.yl: info   # 指定 自定义包 级别
+  file:
+    path: log/blog-pro.log
