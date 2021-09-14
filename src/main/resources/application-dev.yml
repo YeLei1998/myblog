@@ -14,6 +14,5 @@ spring:
 logging:
   level:
     root: info    # 指定 spring boot 级别
-    com.yl: debug   # 指定 自定义包 级别
-  file:
-    path: log/blog-dev.log
+    com.yl.myblog: debug   # 指定 自定义包 级别
+  file: log/blog-pro.log
