@@ -1,6 +1,5 @@
 package com.yl.myblog.web;
 
-import com.yl.myblog.NotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
