@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <!-- 适配移动端  -->
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>博客详情</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-    <link rel="stylesheet" href="./static/css/typo.css">
-    <link rel="stylesheet" href="./static/css/animate.css">
-    <link rel="stylesheet" href="./static/lib/prism/prism.css">
-    <link rel="stylesheet" href="./static/lib/tocbot/tocbot.css">
-    <link rel="stylesheet" href="./static/css/me.css">
+    <link rel="stylesheet" href="../static/css/typo.css" th:href="@{/css/typo.css}">
+    <link rel="stylesheet" href="../static/css/animate.css" th:href="@{/css/animate.css}">
+    <link rel="stylesheet" href="../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}">
+    <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css" th:href="@{/lib/tocbot/tocbot.css}">
+    <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
 </head>
 <body>
 
@@ -468,12 +468,12 @@ h1,h2,h3,h4,h5,h6 {
                     <div class="ui orange basic label">
                         <div class="ui images" style="font-size: inherit !important;">
                             <div class="image">
-                                <img src="./static/images/WeChat.jpg" alt="" class="ui rounded bordered image"
+                                <img src="../static/images/WeChat.jpg" th:src="@{/images/WeChat.jpg}" alt="" class="ui rounded bordered image"
                                      style="width: 120px;">
                                 <div align="center">支付宝</div>
                             </div>
                             <div class="image">
-                                <img src="./static/images/WeChat.jpg" alt="" class="ui rounded bordered image"
+                                <img src="../static/images/WeChat.jpg" th:src="@{/images/WeChat.jpg}" alt="" class="ui rounded bordered image"
                                      style="width: 120px;">
                                 <div align="center">微信</div>
                             </div>
@@ -494,7 +494,7 @@ h1,h2,h3,h4,h5,h6 {
                         </div>
                     </div>
                     <div class="five wide column">
-                        <img src="./static/images/WeChat.jpg" alt="" class="ui right floated rounded bordered image"
+                        <img src="../static/images/WeChat.jpg" th:src="@{/images/WeChat.jpg}" alt="" class="ui right floated rounded bordered image"
                              style="width: 120px;">
                     </div>
                 </div>
@@ -506,7 +506,7 @@ h1,h2,h3,h4,h5,h6 {
                         <h3 class="ui dividing header">Comments</h3>
                         <div class="comment">
                             <a class="avatar">
-                                <img src="./static/images/avatar.png">
+                                <img src="../static/images/avatar.png" th:src="@{/images/avatar.png}">
                             </a>
                             <div class="content">
                                 <a class="author">Matt</a>
@@ -523,7 +523,7 @@ h1,h2,h3,h4,h5,h6 {
                         </div>
                         <div class="comment">
                             <a class="avatar">
-                                <img src="./static/images/footer_image.jpeg">
+                                <img src="../static/images/footer_image.jpeg" th:src="@{/images/footer_image.jpeg}">
                             </a>
                             <div class="content">
                                 <a class="author">Elliot Fu</a>
@@ -540,7 +540,7 @@ h1,h2,h3,h4,h5,h6 {
                             <div class="comments">
                                 <div class="comment">
                                     <a class="avatar">
-                                        <img src="./static/images/avatar.png">
+                                        <img src="../static/images/avatar.png" th:src="@{/images/avatar.png}">
                                     </a>
                                     <div class="content">
                                         <a class="author">Jenny Hess</a>
@@ -559,7 +559,7 @@ h1,h2,h3,h4,h5,h6 {
                         </div>
                         <div class="comment">
                             <a class="avatar">
-                                <img src="./static/images/footer_image.jpeg">
+                                <img src="../static/images/footer_image.jpeg" th:src="@{/images/footer_image.jpeg}">
                             </a>
                             <div class="content">
                                 <a class="author">Joe Henderson</a>
@@ -628,7 +628,7 @@ h1,h2,h3,h4,h5,h6 {
                 <div class="three wide column">
                     <div class="ui inverted link list">
                         <div class="item">
-                            <img src="static/images/footer_image.jpeg" class="ui rounded image" alt=""
+                            <img src="../static/images/footer_image.jpeg" th:src="@{/images/footer_image.jpeg}" class="ui rounded image" alt=""
                                  style="width: 150px">
                         </div>
                     </div>
@@ -662,11 +662,11 @@ h1,h2,h3,h4,h5,h6 {
 
     <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
     <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
-    <script src="./static/js/snow.js"></script>
-    <script src="./static/lib/prism/prism.js"></script>
-    <script src="./static/lib/tocbot/tocbot.min.js"></script>
-    <script src="./static/lib/qrcode/qrcode.min.js"></script>
-    <script src="./static/lib/waypoints/jquery.waypoints.min.js"></script>
+    <script src="../static/js/snow.js" th:src="@{/js/snow.js}"></script>
+    <script src="../static/lib/prism/prism.js" th:src="@{/lib/prism/prism.js}"></script>
+    <script src="../static/lib/tocbot/tocbot.min.js" th:src="@{/lib/tocbot/tocbot.min.js}"></script>
+    <script src="../static/lib/qrcode/qrcode.min.js" th:src="@{/lib/qrcode/qrcode.min.js}"></script>
+    <script src="../static/lib/waypoints/jquery.waypoints.min.js" th:src="@{/lib/waypoints/jquery.waypoints.min.js}"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery.scrollto@2.1.3/jquery.scrollTo.min.js"></script>
