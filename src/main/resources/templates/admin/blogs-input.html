@@ -16,9 +16,9 @@
         <div class="ui container">
             <div class="ui inverted secondary stackable menu">  <!-- stackable可堆叠的 适配手机端 -->
                 <h2 class="ui teal header item">磊の后台管理</h2>
-                <a href="#" class="active m-item item m-mobile-hide"><i class="home icon"></i>博客管理</a>
-                <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>分类</a>
-                <a href="#" class="m-item item m-mobile-hide"><i class="tags icon"></i>标签</a>
+                <a href="#" th:href="@{/admin/blogs}" class="active m-item item m-mobile-hide"><i class="home icon"></i>博客管理</a>
+                <a href="#" th:href="@{/admin/types}" class="m-item item m-mobile-hide"><i class="idea icon"></i>分类</a>
+                <a href="#" th:href="@{/admin/tags}"  class="m-item item m-mobile-hide"><i class="tags icon"></i>标签</a>
                 <div class="right m-item  m-mobile-hide menu">
                     <div class="ui dropdown item">
                         <div class="text">
