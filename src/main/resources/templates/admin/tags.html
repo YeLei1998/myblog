@@ -4,21 +4,20 @@
     <meta charset="UTF-8">
     <!-- 适配移动端  -->
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>分类新增</title>
+    <title>博客标签管理</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css" th:href="@{/lib/editormd/css/editormd.min.css}">
     <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
 </head>
-
 <body>
+
     <!-- 导航 -->
     <nav class="ui inverted attached segment m-padded-tb-tiny m-shadow-small">
         <div class="ui container">
             <div class="ui inverted secondary stackable menu">  <!-- stackable可堆叠的 适配手机端 -->
                 <h2 class="ui teal header item">磊の后台管理</h2>
                 <a href="#" th:href="@{/admin/blogs}" class="m-item item m-mobile-hide"><i class="home icon"></i>博客管理</a>
-                <a href="#" th:href="@{/admin/types}" class="active m-item item m-mobile-hide"><i class="idea icon"></i>分类</a>
-                <a href="#" th:href="@{/admin/tags}"  class="m-item item m-mobile-hide"><i class="tags icon"></i>标签</a>
+                <a href="#" th:href="@{/admin/types}" class="m-item item m-mobile-hide"><i class="idea icon"></i>分类</a>
+                <a href="#" th:href="@{/admin/tags}" class="active m-item item m-mobile-hide"><i class="tags icon"></i>标签</a>
                 <div class="right m-item  m-mobile-hide menu">
                     <div class="ui dropdown item">
                         <div class="text">
@@ -40,8 +39,8 @@
     <div class="ui attached pointing menu">
         <div class="ui container">
             <div class="right menu">
-                <a href="#" th:href="@{/admin/types/input}" class="active item">新增</a>
-                <a href="#" th:href="@{/admin/types}" class="item">列表</a>
+                <a href="#" th:href="@{/admin/tags/input}" class="item">新增</a>
+                <a href="#" th:href="@{/admin/tags}" class="active item">列表</a>
             </div>
         </div>
     </div>
@@ -49,45 +48,44 @@
     <!-- 中间内容 -->
     <div class="m-container-small m-padded-tb-big">
         <div class="ui container">
-            <form action="#" method="post" th:object="${type}" th:action="*{id} == null ? @{/admin/types} : @{/admin/types/{id}(id = *{id})} "class="ui form"> <!-- 绑定Type类 -->
-                <input type="hidden" name="id" th:value="*{id}">
-                <div class="required field">    <!-- 如果消息不通过，提示标红 -->
-                    <div class="ui left labeled input">
-                        <label class="ui teal basic label">分类</label>
-                        <input type="text" name="name" placeholder="分类名称" th:value="*{name}">   <!-- Type类中name的值 -->
-                    </div>
-                </div>
-
-                <div class="ui error message"></div>
-                <!--/*/
-                <div class="ui negative message" th:if="${#fields.hasErrors('name')}"  >
-                  <i class="close icon"></i>
-                  <div class="header">验证失败</div>
-                  <p th:errors="*{name}">提交信息不符合规则</p>
-                </div>
-                 /*/-->
-
-                <div class="ui right aligned container">
-                    <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button> <!-- window.history.go(-1) 返回上一个页面 -->
-                    <button class="ui teal button">提交</button>
-                </div>
-            </form>
+            <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+                <i class="close icon"></i>
+                <div class="header">提示：</div>
+                <p th:text="${message}">恭喜，操作成功！</p>
+            </div>
+            <table class="ui celled table">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>标签名称</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="type,iterStat : ${page.content}">  <!-- 以循环的方式获取type ,iterStat拿到索引 -->
+                        <td th:text="${iterStat.count}">1</td>
+                        <td th:text="${type.name}">刻意练习清单</td>
+                        <td>
+                            <a href="#" th:href="@{/admin/tags/{id}/input(id=${type.id})}" class="ui mini teal basic button">编辑</a>
+                            <a href="#" th:href="@{/admin/tags/{id}/delete(id=${type.id})}" class="ui mini red basic button">删除</a>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="6">
+                            <div class="ui mini pagination menu" th:if="${page.totalPages}>1">
+                                <a th:href="@{/admin/tags(page=${page.number}-1)}" class="item" th:unless="${page.first}">上一页</a>
+                                <a th:href="@{/admin/tags(page=${page.number}+1)}" class="item" th:unless="${page.last}">下一页</a>
+                            </div>
+                            <a href="#" th:href="@{/admin/tags/input}" class="ui right floated teal basic button">新增</a>
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
     </div>
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     <br>
     <br>
 
@@ -146,18 +144,13 @@
             on : 'hover'
         });
 
-        $('.ui.form').form({
-            fields : {
-                title : {
-                    identifier : 'name',
-                    rules : [{
-                        type : 'empty',
-                        prompt : '请输入分类名称'
-                    }]
-                }
-            }
-        })
-
+        //消息提示关闭初始化
+        $('.message .close')
+            .on('click',function () {
+                $(this)
+                    .closest('.message')
+                    .transition('fade');
+            })
     </script>
 </body>
 </html>

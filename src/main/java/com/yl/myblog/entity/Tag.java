@@ -1,6 +1,7 @@
 package com.yl.myblog.entity;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class Tag {
     @GeneratedValue
     private Long id;
     //标签名称
+    @NotBlank(message = "标签名称不能为空")
     private String name;
 
     //多个标签对应多篇博客
