@@ -11,6 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @Author YeLei
  * @Date 2021/09/18 8:52
@@ -61,5 +63,10 @@ public class TypeServiceImpl implements TypeService {
     @Override
     public Page<Type> listType(Pageable pageable) {
         return typeDao.findAll(pageable);
+    }
+
+    @Override
+    public List<Type> listType() {
+        return typeDao.findAll();
     }
 }
